@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class Greet {
     public static void main(String[] args) {
-        System.out.println("    ____________________________________________________________");
+        printBorder();
         System.out.println("    Hello! I'm Ducky.");
         System.out.println("    What can I do for you?");
-        System.out.println("    ____________________________________________________________");
+        printBorder();
 
         Scanner in = new Scanner(System.in);
         String line;
@@ -24,46 +24,49 @@ public class Greet {
             }
 
             if (line.equalsIgnoreCase("list")) {
-                System.out.println("    ____________________________________________________________");
+                printBorder();
                 System.out.println("    Here are the tasks in your list:");
                 for (int i = 0; i < taskCount; i++) {
                     System.out.println("    " + (i + 1) + "." + "[" + storedTasks[i].getStatusIcon()  + "]" + storedTasks[i].description);
                 }
-                System.out.println("    ____________________________________________________________");
+                printBorder();
                 continue;
             }
 
             if (line.toLowerCase().startsWith("mark ")) {
                 int taskIndex = Integer.parseInt(line.substring(4).trim());
                 storedTasks[taskIndex - 1].setDone(true);
-                System.out.println("    ____________________________________________________________");
+                printBorder();
                 System.out.println("    Nice! I've marked this task as done:");
                 System.out.println("    [" + storedTasks[taskIndex - 1].getStatusIcon() + "] " + storedTasks[taskIndex - 1].description);
-                System.out.println("    ____________________________________________________________");
+                printBorder();
                 continue;
             }
 
             if (line.toLowerCase().startsWith("unmark ")) {
                 int taskIndex = Integer.parseInt(line.substring(6).trim());
                 storedTasks[taskIndex - 1].setDone(false);
-                System.out.println("    ____________________________________________________________");
+                printBorder();
                 System.out.println("    OK, I've marked this task as not done yet:");
                 System.out.println("    [" + storedTasks[taskIndex - 1].getStatusIcon() + "] " + storedTasks[taskIndex - 1].description);
-                System.out.println("    ____________________________________________________________");
+                printBorder();
                 continue;
             }
 
             storedTasks[taskCount] = new Task(line);
-            storedTasks[taskCount].description = line;
             taskCount++;
 
-            System.out.println("    ____________________________________________________________");
+            printBorder();
             System.out.println("    added: " + line);
-            System.out.println("    ____________________________________________________________");
+            printBorder();
         }
 
-        System.out.println("    ____________________________________________________________");
+        printBorder();
         System.out.println("    Bye. Hope to see you again soon!");
+        printBorder();
+    }
+
+    public static void printBorder() {
         System.out.println("    ____________________________________________________________");
     }
 }
