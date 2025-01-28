@@ -9,21 +9,53 @@ public class Greet {
 
         Scanner in = new Scanner(System.in);
         String line;
-        String[] storedTexts = new String[100];
-        int textCount = 0;
+        Task[] storedTasks = new Task[100];
+        int taskCount = 0;
 
         while (true) {
             line = in.nextLine();
+
+            if (line.isEmpty()) {
+                continue;
+            }
+
             if (line.equalsIgnoreCase("bye")) {
                 break;
             }
+
             if (line.equalsIgnoreCase("list")) {
-                for (int i = 0; i < textCount; i++) {
-                    System.out.println((i + 1) + ". " + storedTexts[i]);
+                System.out.println("    ____________________________________________________________");
+                System.out.println("    Here are the tasks in your list:");
+                for (int i = 0; i < taskCount; i++) {
+                    System.out.println("    " + (i + 1) + "." + "[" + storedTasks[i].getStatusIcon()  + "]" + storedTasks[i].description);
                 }
+                System.out.println("    ____________________________________________________________");
+                continue;
             }
-            storedTexts[textCount] = line;
-            textCount++;
+
+            if (line.toLowerCase().startsWith("mark ")) {
+                int taskIndex = Integer.parseInt(line.substring(4).trim());
+                storedTasks[taskIndex - 1].setDone(true);
+                System.out.println("    ____________________________________________________________");
+                System.out.println("    Nice! I've marked this task as done:");
+                System.out.println("    [" + storedTasks[taskIndex - 1].getStatusIcon() + "] " + storedTasks[taskIndex - 1].description);
+                System.out.println("    ____________________________________________________________");
+                continue;
+            }
+
+            if (line.toLowerCase().startsWith("unmark ")) {
+                int taskIndex = Integer.parseInt(line.substring(6).trim());
+                storedTasks[taskIndex - 1].setDone(false);
+                System.out.println("    ____________________________________________________________");
+                System.out.println("    OK, I've marked this task as not done yet:");
+                System.out.println("    [" + storedTasks[taskIndex - 1].getStatusIcon() + "] " + storedTasks[taskIndex - 1].description);
+                System.out.println("    ____________________________________________________________");
+                continue;
+            }
+
+            storedTasks[taskCount] = new Task(line);
+            storedTasks[taskCount].description = line;
+            taskCount++;
 
             System.out.println("    ____________________________________________________________");
             System.out.println("    added: " + line);
