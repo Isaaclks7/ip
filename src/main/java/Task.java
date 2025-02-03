@@ -1,6 +1,7 @@
 public class Task {
     protected String description;
     protected boolean isDone;
+    private static final String TYPE = "[T]";
 
     public Task() {
         description = "";
@@ -18,5 +19,21 @@ public class Task {
 
     public String getStatusIcon() {
         return (isDone ? "X" : " ");
+    }
+
+    public String getType() {
+        return TYPE;
+    }
+
+    public String getDeadline() {
+        return "";
+    }
+
+    public String getEventStart() {
+        return "";
+    }
+
+    public String getEventEnd() {
+        return "";
     }
 }
