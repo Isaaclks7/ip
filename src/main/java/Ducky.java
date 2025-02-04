@@ -2,14 +2,8 @@ import java.util.Scanner;
 
 public class Ducky {
     public static void main(String[] args) {
-        String duckyLogo = "     ____             _          \n" +
-                "    |  _ \\ _   _  ___| | ___   _ \n" +
-                "    | | | | | | |/ __| |/ / | | |\n" +
-                "    | |_| | |_| | (__|   <| |_| |\n" +
-                "    |____/ \\__,_|\\___|_|\\_\\\\__, |\n" +
-                "                           |___/ ";
         printBorder();
-        System.out.println("    Hello! I'm\n" + duckyLogo);
+        System.out.println("    Hello! I'm Ducky!");
         System.out.println("    What can I do for you?");
         printBorder();
 
@@ -34,7 +28,7 @@ public class Ducky {
                 break;
             }
 
-            int taskIndex = 0;
+            int taskIndex;
             switch (result.command) {
             case "list":
                 printBorder();
@@ -79,7 +73,7 @@ public class Ducky {
                 taskList[taskCount] = new Todo(result.description);
                 taskCount++;
                 printBorder();
-                System.out.println("    Got it. I've added this Todo: ");
+                System.out.println("    Got it. I've added this Todo:");
                 System.out.println("      " + taskList[taskCount - 1].getType() + "[ ] " + result.description);
                 System.out.println("    Now you have " + taskCount + " tasks in your list.");
                 printBorder();
@@ -88,7 +82,7 @@ public class Ducky {
                 taskList[taskCount] = new Deadline(result.description, result.deadline);
                 taskCount++;
                 printBorder();
-                System.out.println("    Got it. I've added this Deadline: ");
+                System.out.println("    Got it. I've added this Deadline:");
                 System.out.println("      " + taskList[taskCount - 1].getType() + "[ ] " + result.description + " (By: " + result.deadline + ")");
                 System.out.println("    Now you have " + taskCount + " tasks in your list.");
                 printBorder();
@@ -97,7 +91,7 @@ public class Ducky {
                 taskList[taskCount] = new Event(result.description, result.eventStart, result.eventEnd);
                 taskCount++;
                 printBorder();
-                System.out.println("    Got it. I've added this Event: ");
+                System.out.println("    Got it. I've added this Event:");
                 System.out.println("      " + taskList[taskCount - 1].getType() + "[ ] " + result.description + " (From: " + result.eventStart + " To: " + result.eventEnd + ")");
                 System.out.println("    Now you have " + taskCount + " tasks in your list.");
                 printBorder();
