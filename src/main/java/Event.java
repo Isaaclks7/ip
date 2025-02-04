@@ -21,14 +21,6 @@ public class Event extends Task {
         return eventEnd;
     }
 
-    public void setEventStart(String eventStart) {
-        this.eventStart = eventStart;
-    }
-
-    public void setEventEnd(String eventEnd) {
-        this.eventEnd = eventEnd;
-    }
-
     @Override
     public String getType() {
         return TYPE;

@@ -23,14 +23,7 @@ public class Parser {
         String eventStart = "";
         String eventEnd = "";
 
-        if (s.isEmpty()) {
-            System.out.println("No command found, please try again.\nCommands available:");
-            System.out.println("todo <task description>");
-            System.out.println("deadline <task description> /by <deadline>");
-            System.out.println("event <task description> /from <start time> /to <end time>");
-            return null;
-        }
-
+        //Ensures input contains task description
         s = s.trim();
         if (s.contains(" ")) {
             command = s.substring(0, s.indexOf(" "));
@@ -54,6 +47,7 @@ public class Parser {
             return null;
         }
 
+        //Ensures valid command for adding a task
         switch(command) {
         case "todo":
             description = s.substring(s.indexOf(" ") + 1);

@@ -15,10 +15,6 @@ public class Deadline extends Task {
         return deadline;
     }
 
-    public void setDeadline(String deadline) {
-        this.deadline = deadline;
-    }
-
     @Override
     public String getType() {
         return TYPE;
