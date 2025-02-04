@@ -1,0 +1,17 @@
+todo Homework
+deadline Graded assignment 2 /by 5th April 2025
+event Birthday Party /from 1st June 5.00pm /to 2nd June 12.00pm
+list
+mark 2
+list
+mark 1
+list
+unmark 1
+unmark 2
+list
+todo
+deadline
+event
+deadline Important task
+event Meeting with clients
+bye
