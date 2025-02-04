@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Greet {
+public class Ducky {
     public static void main(String[] args) {
         String duckyLogo = "     ____             _          \n" +
                 "    |  _ \\ _   _  ___| | ___   _ \n" +
