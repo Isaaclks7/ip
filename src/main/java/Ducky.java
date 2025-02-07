@@ -41,15 +41,15 @@ public class Ducky {
                 unmarkTask(line, taskCount, taskList);
                 break;
             case "todo":
-                addTodo(taskList, taskCount, result);
+                Todo.addTodo(taskList, taskCount, result);
                 taskCount++;
                 break;
             case "deadline":
-                addDeadline(taskList, taskCount, result);
+                Deadline.addDeadline(taskList, taskCount, result);
                 taskCount++;
                 break;
             case "event":
-                addEvent(taskList, taskCount, result);
+                Event.addEvent(taskList, taskCount, result);
                 taskCount++;
                 break;
             default:
@@ -101,33 +101,6 @@ public class Ducky {
         System.out.println("      5. Mark a task as done: mark <task index>");
         System.out.println("      6. Unmark a task as undone: unmark <task index>");
         System.out.println("      7. End program: bye");
-        printBorder();
-    }
-
-    private static void addEvent(Task[] taskList, int taskCount, Parser.CommandResult result) {
-        taskList[taskCount] = new Event(result.description, result.eventStart, result.eventEnd);
-        printBorder();
-        System.out.println("    Got it. I've added this Event:");
-        System.out.println("      " + taskList[taskCount].getType() + "[ ] " + result.description + " (From: " + result.eventStart + " To: " + result.eventEnd + ")");
-        System.out.println("    Now you have " + (taskCount +1) + " tasks in your list.");
-        printBorder();
-    }
-
-    private static void addDeadline(Task[] taskList, int taskCount, Parser.CommandResult result) {
-        taskList[taskCount] = new Deadline(result.description, result.deadline);
-        printBorder();
-        System.out.println("    Got it. I've added this Deadline:");
-        System.out.println("      " + taskList[taskCount].getType() + "[ ] " + result.description + " (By: " + result.deadline + ")");
-        System.out.println("    Now you have " + (taskCount +1) + " tasks in your list.");
-        printBorder();
-    }
-
-    private static void addTodo(Task[] taskList, int taskCount, Parser.CommandResult result) {
-        taskList[taskCount] = new Todo(result.description);
-        printBorder();
-        System.out.println("    Got it. I've added this Todo:");
-        System.out.println("      " + taskList[taskCount].getType() + "[ ] " + result.description);
-        System.out.println("    Now you have " + (taskCount +1) + " tasks in your list.");
         printBorder();
     }
 

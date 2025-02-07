@@ -10,6 +10,15 @@ public class Event extends Task {
         this.eventEnd = endTime;
     }
 
+    public static void addEvent(Task[] taskList, int taskCount, Parser.CommandResult result) {
+        taskList[taskCount] = new Event(result.description, result.eventStart, result.eventEnd);
+        Ducky.printBorder();
+        System.out.println("    Got it. I've added this Event:");
+        System.out.println("      " + taskList[taskCount].getType() + "[ ] " + result.description + " (From: " + result.eventStart + " To: " + result.eventEnd + ")");
+        System.out.println("    Now you have " + (taskCount +1) + " tasks in your list.");
+        Ducky.printBorder();
+    }
+
     //Getters and setters
     @Override
     public String getEventStart() {
