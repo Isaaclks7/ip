@@ -9,6 +9,7 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    //Add a deadline to the list of tasks
     public static void addDeadline(Task[] taskList, int taskCount, Parser.CommandResult result) {
         taskList[taskCount] = new Deadline(result.description, result.deadline);
         Ducky.printBorder();

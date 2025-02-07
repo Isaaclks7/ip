@@ -10,6 +10,7 @@ public class Event extends Task {
         this.eventEnd = endTime;
     }
 
+    //Add an event to the list of tasks
     public static void addEvent(Task[] taskList, int taskCount, Parser.CommandResult result) {
         taskList[taskCount] = new Event(result.description, result.eventStart, result.eventEnd);
         Ducky.printBorder();
