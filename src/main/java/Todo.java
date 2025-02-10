@@ -6,7 +6,7 @@ public class Todo extends Task{
     }
 
     //Add a to-do to a list of tasks
-    public static void addTodo(Task[] taskList, int taskCount, Parser.CommandResult result) {
+    public static void addTodo(Task[] taskList, int taskCount, Parser result) {
         taskList[taskCount] = new Todo(result.description);
         Ducky.printBorder();
         System.out.println("    Got it. I've added this Todo:");

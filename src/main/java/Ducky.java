@@ -21,7 +21,7 @@ public class Ducky {
                 continue;
             }
 
-            Parser.CommandResult result = Parser.extract(line);
+            Parser result = Parser.extract(line);
             if (result == null) {
                 continue;
             }

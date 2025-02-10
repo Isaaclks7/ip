@@ -1,4 +1,17 @@
 public class Parser {
+    String command;
+    String description;
+    String deadline;
+    String eventStart;
+    String eventEnd;
+
+    public Parser(String command, String description, String deadline, String eventStart, String eventEnd) {
+        this.command = command;
+        this.description = description;
+        this.deadline = deadline;
+        this.eventStart = eventStart;
+        this.eventEnd = eventEnd;
+    }
 
     public static void showValidCommands() {
         Ducky.printBorder();
@@ -13,23 +26,7 @@ public class Parser {
         Ducky.printBorder();
     }
 
-    public static class CommandResult {
-        String command;
-        String description;
-        String deadline;
-        String eventStart;
-        String eventEnd;
-
-        public CommandResult(String command, String description, String deadline, String eventStart, String eventEnd) {
-            this.command = command;
-            this.description = description;
-            this.deadline = deadline;
-            this.eventStart = eventStart;
-            this.eventEnd = eventEnd;
-        }
-    }
-
-    public static CommandResult extract(String s) {
+    public static Parser extract(String s) {
         String command;
         String description = "";
         String deadline = "";
@@ -48,7 +45,7 @@ public class Parser {
             return null;
         } else {
             command = s;
-            return new CommandResult(command, description, deadline, eventStart, eventEnd);
+            return new Parser(command, description, deadline, eventStart, eventEnd);
         }
 
         //Stores entire substring after the command
@@ -91,7 +88,7 @@ public class Parser {
         default:
             break;
         }
-        return new CommandResult(command, description, deadline, eventStart, eventEnd);
+        return new Parser(command, description, deadline, eventStart, eventEnd);
     }
 }
 
