@@ -58,13 +58,16 @@
     3.[E][ ] Birthday Party  (From: 1st June 5.00pm  To: 2nd June 12.00pm)
     ____________________________________________________________
     ____________________________________________________________
-    Task is missing description
+    Please add Todo's description:
+    todo <task description>
     ____________________________________________________________
     ____________________________________________________________
-    Task is missing description
+    Please add due date:
+    deadline <task description> /by <due date>
     ____________________________________________________________
     ____________________________________________________________
-    Task is missing description
+    Please add event's start and end time:
+    event <task description> /from <start time> /to <end time>
     ____________________________________________________________
     ____________________________________________________________
     Please add due date:

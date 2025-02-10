@@ -1,3 +1,8 @@
+package task;
+
+import ducky.Ducky;
+import ducky.Parser;
+
 public class Deadline extends Task {
     private String deadline;
 

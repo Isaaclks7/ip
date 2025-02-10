@@ -1,3 +1,5 @@
+package ducky;
+
 public class Parser {
     protected String command;
     protected String description;

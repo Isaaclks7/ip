@@ -1,3 +1,8 @@
+package task;
+
+import ducky.Ducky;
+import ducky.Parser;
+
 public class Event extends Task {
     private String eventStart;
     private String eventEnd;
