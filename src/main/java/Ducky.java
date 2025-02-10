@@ -54,7 +54,7 @@ public class Ducky {
                 taskCount++;
                 break;
             default:
-                Parser.showValidCommands();
+                DuckyException.showValidCommands();
                 break;
             }
         }
