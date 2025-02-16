@@ -1,9 +1,6 @@
 package ducky;
 
-import task.Deadline;
-import task.Event;
-import task.Task;
-import task.Todo;
+import task.*;
 
 import java.util.Scanner;
 
@@ -51,14 +48,17 @@ public class Ducky {
             case "todo":
                 Todo.addTodo(taskList, taskCount, result);
                 taskCount++;
+                TaskStorage.addTaskToFile(taskList[taskCount - 1]);
                 break;
             case "deadline":
                 Deadline.addDeadline(taskList, taskCount, result);
                 taskCount++;
+                TaskStorage.addTaskToFile(taskList[taskCount - 1]);
                 break;
             case "event":
                 Event.addEvent(taskList, taskCount, result);
                 taskCount++;
+                TaskStorage.addTaskToFile(taskList[taskCount - 1]);
                 break;
             default:
                 DuckyException.showValidCommands();
