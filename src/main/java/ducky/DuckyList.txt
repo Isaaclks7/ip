@@ -1,3 +1,3 @@
-[T] something
-[D] CS2113 assignmentBy: friday
-[E] urgent meeting From: 3pm  To: 5pm
+1. [D][ ] assignment By: monday
+2. [E][ ] meeting From: 5pm  To: 6pm
+3. [T][ ] lololol

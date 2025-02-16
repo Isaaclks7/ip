@@ -2,6 +2,8 @@ package ducky;
 
 import task.*;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ducky {
@@ -13,10 +15,14 @@ public class Ducky {
 
         Scanner in = new Scanner(System.in);
         String line;
-        final int LIST_SIZE = 100;
-        Task[] taskList = new Task[LIST_SIZE];
-        int taskCount = 0;
+        ArrayList<Task> taskList = new ArrayList<>();
 
+        try {
+            TaskStorage.loadData(taskList);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        int taskCount = taskList.size();
         //Handle different commands
         while (true) {
             line = in.nextLine();
@@ -48,17 +54,17 @@ public class Ducky {
             case "todo":
                 Todo.addTodo(taskList, taskCount, result);
                 taskCount++;
-                TaskStorage.addTaskToFile(taskList[taskCount - 1]);
+                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
                 break;
             case "deadline":
                 Deadline.addDeadline(taskList, taskCount, result);
                 taskCount++;
-                TaskStorage.addTaskToFile(taskList[taskCount - 1]);
+                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
                 break;
             case "event":
                 Event.addEvent(taskList, taskCount, result);
                 taskCount++;
-                TaskStorage.addTaskToFile(taskList[taskCount - 1]);
+                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
                 break;
             default:
                 DuckyException.showValidCommands();
