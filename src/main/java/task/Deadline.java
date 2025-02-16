@@ -3,6 +3,8 @@ package task;
 import ducky.Ducky;
 import ducky.Parser;
 
+import java.util.ArrayList;
+
 public class Deadline extends Task {
     private String deadline;
 
@@ -15,11 +17,11 @@ public class Deadline extends Task {
     }
 
     //Add a deadline to the list of tasks
-    public static void addDeadline(Task[] taskList, int taskCount, Parser result) {
-        taskList[taskCount] = new Deadline(result.description, result.deadline);
+    public static void addDeadline(ArrayList<Task> taskList, int taskCount, Parser result) {
+        taskList.add(new Deadline(result.description, result.deadline));
         Ducky.printBorder();
         System.out.println("    Got it. I've added this Deadline:");
-        System.out.println("      " + taskList[taskCount].getType() + "[ ] " + result.description + " (By: " + result.deadline + ")");
+        System.out.println("      [D]" + "[ ] " + result.description + " (By: " + result.deadline + ")");
         System.out.println("    Now you have " + (taskCount +1) + " tasks in your list.");
         Ducky.printBorder();
     }

@@ -6,6 +6,7 @@ import task.Task;
 import task.Todo;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Ducky {
     public static void main(String[] args) {
@@ -16,8 +17,9 @@ public class Ducky {
 
         Scanner in = new Scanner(System.in);
         String line;
-        final int LIST_SIZE = 100;
-        Task[] taskList = new Task[LIST_SIZE];
+        //final int LIST_SIZE = 100;
+        ArrayList<Task> taskList = new ArrayList<>();
+        //Task[] taskList = new Task[LIST_SIZE];
         int taskCount = 0;
 
         //Handle different commands
