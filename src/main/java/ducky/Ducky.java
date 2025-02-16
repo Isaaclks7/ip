@@ -45,10 +45,10 @@ public class Ducky {
                 Task.listAllTasks(taskCount, taskList);
                 break;
             case "mark":
-                Task.markTask(line, taskCount, taskList);
+                Task.markTask(line, taskList);
                 break;
             case "unmark":
-                Task.unmarkTask(line, taskCount, taskList);
+                Task.unmarkTask(line, taskList);
                 break;
             case "todo":
                 Todo.addTodo(taskList, taskCount, result);
@@ -61,6 +61,9 @@ public class Ducky {
             case "event":
                 Event.addEvent(taskList, taskCount, result);
                 taskCount++;
+                break;
+            case "delete":
+                Task.deleteTask(line, taskList);
                 break;
             default:
                 DuckyException.showValidCommands();
