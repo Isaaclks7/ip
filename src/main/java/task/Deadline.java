@@ -11,14 +11,14 @@ public class Deadline extends Task {
     private static final String TYPE = "[D]";
 
     //Constructor
-    public Deadline(String description, String deadline) {
-        super(description);
+    public Deadline(String description, boolean isDone, String deadline) {
+        super(description, isDone);
         this.deadline = deadline;
     }
 
     //Add a deadline to the list of tasks
     public static void addDeadline(ArrayList<Task> taskList, int taskCount, Parser result) {
-        taskList.add(new Deadline(result.description, result.deadline));
+        taskList.add(new Deadline(result.description, false, result.deadline));
         Ducky.printBorder();
         System.out.println("    Got it. I've added this Deadline:");
         System.out.println("      [D]" + "[ ] " + result.description + " (By: " + result.deadline + ")");

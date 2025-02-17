@@ -4,7 +4,11 @@ import task.Deadline;
 import task.Event;
 import task.Task;
 import task.Todo;
+import task.TaskStorage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -17,11 +21,14 @@ public class Ducky {
 
         Scanner in = new Scanner(System.in);
         String line;
-        //final int LIST_SIZE = 100;
         ArrayList<Task> taskList = new ArrayList<>();
-        //Task[] taskList = new Task[LIST_SIZE];
-        int taskCount = 0;
 
+        try {
+            TaskStorage.loadData(taskList);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        int taskCount = taskList.size();
         //Handle different commands
         while (true) {
             line = in.nextLine();
@@ -46,24 +53,30 @@ public class Ducky {
                 break;
             case "mark":
                 Task.markTask(line, taskList);
+                TaskStorage.updateTaskFile(taskList);
                 break;
             case "unmark":
                 Task.unmarkTask(line, taskList);
+                TaskStorage.updateTaskFile(taskList);
                 break;
             case "todo":
                 Todo.addTodo(taskList, taskCount, result);
                 taskCount++;
+                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
                 break;
             case "deadline":
                 Deadline.addDeadline(taskList, taskCount, result);
                 taskCount++;
+                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
                 break;
             case "event":
                 Event.addEvent(taskList, taskCount, result);
                 taskCount++;
+                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
                 break;
             case "delete":
                 Task.deleteTask(line, taskList);
+                TaskStorage.updateTaskFile(taskList);
                 break;
             default:
                 DuckyException.showValidCommands();

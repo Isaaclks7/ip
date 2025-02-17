@@ -11,15 +11,15 @@ public class Event extends Task {
     private static final String TYPE = "[E]";
 
     //Constructor
-    public Event(String description, String startTime, String endTime) {
-        super(description);
+    public Event(String description, boolean isDone, String startTime, String endTime) {
+        super(description, isDone);
         this.eventStart = startTime;
         this.eventEnd = endTime;
     }
 
     //Add an event to the list of tasks
     public static void addEvent(ArrayList<Task> taskList, int taskCount, Parser result) {
-        taskList.add(new Event(result.description, result.eventStart, result.eventEnd));
+        taskList.add(new Event(result.description, false, result.eventStart, result.eventEnd));
         Ducky.printBorder();
         System.out.println("    Got it. I've added this Event:");
         System.out.println("      [E]" + "[ ] " + result.description + " (From: " + result.eventStart + " To: " + result.eventEnd + ")");
