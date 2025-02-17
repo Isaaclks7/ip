@@ -47,6 +47,10 @@ public class TaskStorage {
 
     public static void addTaskToFile(Task task, int index) {
         File f = new File("data/DuckyList.txt");
+        File parentDir = f.getParentFile();
+        if (parentDir != null && !parentDir.exists()) {
+            parentDir.mkdirs();  // This will create 'data' and any missing parent directories
+        }
         try {
             if (!f.exists()) {
                 boolean isCreated = f.createNewFile();
