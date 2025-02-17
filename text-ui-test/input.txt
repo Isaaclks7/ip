@@ -9,6 +9,9 @@ list
 unmark 1
 unmark 2
 list
+mark 2
+delete 2
+list
 todo
 deadline
 event

@@ -14,7 +14,9 @@ public class DuckyException extends Exception {
         System.out.println("      4. List out all tasks: list");
         System.out.println("      5. Mark a task as done: mark <task index>");
         System.out.println("      6. Unmark a task as undone: unmark <task index>");
-        System.out.println("      7. End program: bye");
+        System.out.println("      7. Delete a task: delete <task index>");
+        System.out.println("      8. End program: bye");
+
         Ducky.printBorder();
     }
 

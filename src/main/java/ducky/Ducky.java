@@ -6,6 +6,7 @@ import task.Task;
 import task.Todo;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Ducky {
     public static void main(String[] args) {
@@ -16,8 +17,9 @@ public class Ducky {
 
         Scanner in = new Scanner(System.in);
         String line;
-        final int LIST_SIZE = 100;
-        Task[] taskList = new Task[LIST_SIZE];
+        //final int LIST_SIZE = 100;
+        ArrayList<Task> taskList = new ArrayList<>();
+        //Task[] taskList = new Task[LIST_SIZE];
         int taskCount = 0;
 
         //Handle different commands
@@ -43,10 +45,10 @@ public class Ducky {
                 Task.listAllTasks(taskCount, taskList);
                 break;
             case "mark":
-                Task.markTask(line, taskCount, taskList);
+                Task.markTask(line, taskList);
                 break;
             case "unmark":
-                Task.unmarkTask(line, taskCount, taskList);
+                Task.unmarkTask(line, taskList);
                 break;
             case "todo":
                 Todo.addTodo(taskList, taskCount, result);
@@ -59,6 +61,9 @@ public class Ducky {
             case "event":
                 Event.addEvent(taskList, taskCount, result);
                 taskCount++;
+                break;
+            case "delete":
+                Task.deleteTask(line, taskList);
                 break;
             default:
                 DuckyException.showValidCommands();

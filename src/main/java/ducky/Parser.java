@@ -1,11 +1,11 @@
 package ducky;
 
 public class Parser {
-    protected String command;
-    protected String description;
-    protected String deadline;
-    protected String eventStart;
-    protected String eventEnd;
+    public String command;
+    public String description;
+    public String deadline;
+    public String eventStart;
+    public String eventEnd;
 
     public Parser(String command, String description, String deadline, String eventStart, String eventEnd) {
         this.command = command;
