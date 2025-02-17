@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class TaskStorage {
 
     public static void loadData(ArrayList<Task> taskList) throws FileNotFoundException {
-        File f = new File("src/main/java/ducky/DuckyList.txt");
+        File f = new File("data/DuckyList.txt");
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String line = s.nextLine();
@@ -46,7 +46,7 @@ public class TaskStorage {
     }
 
     public static void addTaskToFile(Task task, int index) {
-        File f = new File("src/main/java/ducky/DuckyList.txt");
+        File f = new File("data/DuckyList.txt");
         try {
             if (!f.exists()) {
                 boolean isCreated = f.createNewFile();
@@ -75,7 +75,7 @@ public class TaskStorage {
     }
 
     public static void updateTaskFile(ArrayList<Task> taskList) {
-        File f = new File("src/main/java/ducky/DuckyList.txt");
+        File f = new File("data/DuckyList.txt");
         try {
             FileWriter fw = new FileWriter(f);
             int taskIndex = 1;
