@@ -16,13 +16,18 @@ public class Deadline extends Task {
         this.deadline = deadline;
     }
 
+    @Override
+    public String toString() {
+        return getType() + getStatusIcon() + " " + getDescription() + " (By: " + getDeadline() + ")";
+    }
+
     //Add a deadline to the list of tasks
-    public static void addDeadline(ArrayList<Task> taskList, int taskCount, Parser result) {
+    public static void addDeadline(ArrayList<Task> taskList, Parser result) {
         taskList.add(new Deadline(result.description, false, result.deadline));
         Ducky.printBorder();
         System.out.println("    Got it. I've added this Deadline:");
         System.out.println("      [D]" + "[ ] " + result.description + " (By: " + result.deadline + ")");
-        System.out.println("    Now you have " + (taskCount +1) + " tasks in your list.");
+        System.out.println("    Now you have " + taskList.size() + " tasks in your list.");
         Ducky.printBorder();
     }
 

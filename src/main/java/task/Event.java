@@ -17,13 +17,18 @@ public class Event extends Task {
         this.eventEnd = endTime;
     }
 
+    @Override
+    public String toString(){
+        return getType() + getStatusIcon() + " " + getDescription() + " (From: " + getEventStart() + " To: " + getEventEnd() + ")";
+    }
+
     //Add an event to the list of tasks
-    public static void addEvent(ArrayList<Task> taskList, int taskCount, Parser result) {
+    public static void addEvent(ArrayList<Task> taskList, Parser result) {
         taskList.add(new Event(result.description, false, result.eventStart, result.eventEnd));
         Ducky.printBorder();
         System.out.println("    Got it. I've added this Event:");
         System.out.println("      [E]" + "[ ] " + result.description + " (From: " + result.eventStart + " To: " + result.eventEnd + ")");
-        System.out.println("    Now you have " + (taskCount +1) + " tasks in your list.");
+        System.out.println("    Now you have " + taskList.size() + " tasks in your list.");
         Ducky.printBorder();
     }
 

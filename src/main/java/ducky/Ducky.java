@@ -26,9 +26,8 @@ public class Ducky {
         try {
             TaskStorage.loadData(taskList);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("    Add your tasks!");
         }
-        int taskCount = taskList.size();
         //Handle different commands
         while (true) {
             line = in.nextLine();
@@ -49,7 +48,7 @@ public class Ducky {
             int taskIndex;
             switch (result.command) {
             case "list":
-                Task.listAllTasks(taskCount, taskList);
+                Task.listAllTasks(taskList);
                 break;
             case "mark":
                 Task.markTask(line, taskList);
@@ -60,19 +59,16 @@ public class Ducky {
                 TaskStorage.updateTaskFile(taskList);
                 break;
             case "todo":
-                Todo.addTodo(taskList, taskCount, result);
-                taskCount++;
-                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
+                Todo.addTodo(taskList, result);
+                TaskStorage.addTaskToFile(taskList.get(taskList.size() - 1), taskList.size());
                 break;
             case "deadline":
-                Deadline.addDeadline(taskList, taskCount, result);
-                taskCount++;
-                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
+                Deadline.addDeadline(taskList, result);
+                TaskStorage.addTaskToFile(taskList.get(taskList.size() - 1), taskList.size());
                 break;
             case "event":
-                Event.addEvent(taskList, taskCount, result);
-                taskCount++;
-                TaskStorage.addTaskToFile(taskList.get(taskCount - 1), taskCount);
+                Event.addEvent(taskList, result);
+                TaskStorage.addTaskToFile(taskList.get(taskList.size() - 1), taskList.size());
                 break;
             case "delete":
                 Task.deleteTask(line, taskList);
