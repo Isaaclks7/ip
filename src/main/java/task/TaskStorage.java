@@ -17,22 +17,22 @@ public class TaskStorage {
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String line = s.nextLine();
-            String taskType = line.substring(4,5);
+            String taskType = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
             boolean isDone = line.contains("[X]");
             String description = "";
             switch (taskType) {
             case "T":
-                description = line.substring(10);
+                description = line.substring(line.indexOf("-") + 1);
                 taskList.add(new Todo(description, isDone));
                 break;
             case "D":
-                    description = line.substring(10, line.indexOf(" By: "));
+                    description = line.substring(line.indexOf("-") + 1, line.indexOf(" By: "));
                     String deadline = line.substring(line.indexOf("By: ") + 4);
                     taskList.add(new Deadline(description, isDone, deadline));
                 break;
             case "E":
-                description = line.substring(10, line.indexOf(" From: "));
-                String from = line.substring(line.indexOf(" From: ") + 7, line.indexOf(" To: "));
+                description = line.substring(line.indexOf("-") + 1, line.indexOf(" From: "));
+                String from = line.substring(line.indexOf("From: ") + 6, line.indexOf("To: "));
                 String to = line.substring(line.indexOf(" To: ") + 5);
                 taskList.add(new Event(description, isDone, from, to));
                 break;
@@ -40,7 +40,7 @@ public class TaskStorage {
                 Ducky.printBorder();
                 System.out.println("    Error loading tasks");
                 Ducky.printBorder();
-                break;
+                return;
             }
         }
     }
@@ -56,7 +56,7 @@ public class TaskStorage {
             }
             FileWriter fw = new FileWriter(f, true);
 
-            fw.write(index + ". " + task.getType() + task.getStatusIcon() + " " + task.getDescription());
+            fw.write(index + ". " + task.getType() + task.getStatusIcon() + " - " + task.getDescription());
             switch (task.getType()) {
             case "[T]":
                 fw.write(System.lineSeparator());
@@ -65,7 +65,7 @@ public class TaskStorage {
                 fw.write(" By: " + task.getDeadline() + System.lineSeparator());
                 break;
             case "[E]":
-                fw.write("From: " + task.getEventStart() + " To: " + task.getEventEnd() + System.lineSeparator());
+                fw.write("From: " + task.getEventStart() + "To: " + task.getEventEnd() + System.lineSeparator());
                 break;
             }
             fw.close();
@@ -74,15 +74,33 @@ public class TaskStorage {
         }
     }
 
-    public static void updateTaskFile(Task task, int taskIndex) {
+    public static void updateTaskFile(ArrayList<Task> taskList) {
         File f = new File("src/main/java/ducky/DuckyList.txt");
         try {
-            if (!f.exists()) {
-                boolean isCreated = f.createNewFile();
-                if (!isCreated) {
-                    System.out.println("Error creating file, please try again.");
+            FileWriter fw = new FileWriter(f);
+            int taskIndex = 1;
+            for (Task task : taskList) {
+                fw.write(taskIndex + ". " + task.getType() + task.getStatusIcon() + " - " + task.getDescription());
+                taskIndex++;
+                switch (task.getType()) {
+                case "[T]":
+                    fw.write(System.lineSeparator());
+                    break;
+                case "[D]":
+                    fw.write(" By: " + task.getDeadline() + System.lineSeparator());
+                    break;
+                case "[E]":
+                    fw.write(" From: " + task.getEventStart() + "To: " + task.getEventEnd() + System.lineSeparator());
+                    break;
+                default:
+                    Ducky.printBorder();
+                    System.out.println("    Error updating task");
+                    Ducky.printBorder();
+                    fw.close();
+                    return;
                 }
             }
+            fw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

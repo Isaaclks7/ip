@@ -28,7 +28,7 @@ public class Task {
             if (taskList.get(i).getType().equals("[D]")) {
                 System.out.println(" (By: " + taskList.get(i).getDeadline() + ")");
             } else if (taskList.get(i).getType().equals("[E]")) {
-                System.out.println(" (From: " + taskList.get(i).getEventStart() + " To: " + taskList.get(i).getEventEnd() + ")");
+                System.out.println(" (From: " + taskList.get(i).getEventStart() + "To: " + taskList.get(i).getEventEnd() + ")");
             } else {
                 System.out.println();
             }

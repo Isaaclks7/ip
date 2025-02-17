@@ -2,6 +2,7 @@ package ducky;
 
 import task.*;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -47,9 +48,11 @@ public class Ducky {
                 break;
             case "mark":
                 Task.markTask(line, taskCount, taskList);
+                TaskStorage.updateTaskFile(taskList);
                 break;
             case "unmark":
                 Task.unmarkTask(line, taskCount, taskList);
+                TaskStorage.updateTaskFile(taskList);
                 break;
             case "todo":
                 Todo.addTodo(taskList, taskCount, result);
