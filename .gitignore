@@ -18,3 +18,4 @@ text-ui-test/EXPECTED-UNIX.TXT
 
 #Storage folder
 /src/main/java/ducky/DuckyList.txt
+/text-ui-test/data/DuckyList.txt
