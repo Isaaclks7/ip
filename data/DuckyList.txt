@@ -1,6 +1,2 @@
-1. [T][ ] - read all books
-2. [D][ ] - finish CS2113 book By: 2025-02-25
-3. [E][ ] - urgent meeting about bookworm From: today To: tomorrow
-4. [T][ ] - homeowkr
-5. [D][ ] - Graded assignment 2 By: Feb 25 2025
-6. [E][ ] - Birthday Party From: 1st June 5.00pm To: 2nd June 12.00pm
+1. [T][ ] Buy groceries
+2. [D][ ] Complete math assignment (By: Feb 9 2025)
