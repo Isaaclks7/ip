@@ -17,4 +17,6 @@ deadline
 event
 deadline Important task
 event Meeting with clients
+delete 1
+delete 1
 bye

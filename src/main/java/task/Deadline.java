@@ -2,6 +2,7 @@ package task;
 
 import ducky.Ducky;
 import ducky.Parser;
+import ducky.Ui;
 
 import java.util.ArrayList;
 
@@ -24,11 +25,11 @@ public class Deadline extends Task {
     //Add a deadline to the list of tasks
     public static void addDeadline(ArrayList<Task> taskList, Parser result) {
         taskList.add(new Deadline(result.description, false, result.deadline));
-        Ducky.printBorder();
+        Ui.printBorder();
         System.out.println("    Got it. I've added this Deadline:");
-        System.out.println("      [D]" + "[ ] " + result.description + " (By: " + result.deadline + ")");
+        System.out.println("    " + taskList.get(taskList.size()-1).toString());
         System.out.println("    Now you have " + taskList.size() + " tasks in your list.");
-        Ducky.printBorder();
+        Ui.printBorder();
     }
 
     //Getters and setters

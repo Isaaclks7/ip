@@ -6,7 +6,7 @@ public class DuckyException extends Exception {
     }
 
     public static void showValidCommands() {
-        Ducky.printBorder();
+        Ui.printBorder();
         System.out.println("    Invalid command. Please try the following:");
         System.out.println("      1. Add a task: todo <task description>");
         System.out.println("      2. Add task with deadline: deadline <task description> /by <deadline>");
@@ -17,27 +17,27 @@ public class DuckyException extends Exception {
         System.out.println("      7. Delete a task: delete <task index>");
         System.out.println("      8. End program: bye");
 
-        Ducky.printBorder();
+        Ui.printBorder();
     }
 
     public static void printDeadlineError() {
-        Ducky.printBorder();
+        Ui.printBorder();
         System.out.println("    Please add due date:");
         System.out.println("    deadline <task description> /by <due date>");
-        Ducky.printBorder();
+        Ui.printBorder();
     }
 
     public static void printEventError() {
-        Ducky.printBorder();
+        Ui.printBorder();
         System.out.println("    Please add event's start and end time:");
         System.out.println("    event <task description> /from <start time> /to <end time>");
-        Ducky.printBorder();
+        Ui.printBorder();
     }
 
     public static void printTodoError() {
-        Ducky.printBorder();
+        Ui.printBorder();
         System.out.println("    Please add Todo's description:");
         System.out.println("    todo <task description>");
-        Ducky.printBorder();
+        Ui.printBorder();
     }
 }

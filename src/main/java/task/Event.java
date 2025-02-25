@@ -2,6 +2,7 @@ package task;
 
 import ducky.Ducky;
 import ducky.Parser;
+import ducky.Ui;
 
 import java.util.ArrayList;
 
@@ -25,11 +26,11 @@ public class Event extends Task {
     //Add an event to the list of tasks
     public static void addEvent(ArrayList<Task> taskList, Parser result) {
         taskList.add(new Event(result.description, false, result.eventStart, result.eventEnd));
-        Ducky.printBorder();
+        Ui.printBorder();
         System.out.println("    Got it. I've added this Event:");
-        System.out.println("      [E]" + "[ ] " + result.description + " (From: " + result.eventStart + " To: " + result.eventEnd + ")");
+        System.out.println("    " + taskList.get(taskList.size()-1).toString());
         System.out.println("    Now you have " + taskList.size() + " tasks in your list.");
-        Ducky.printBorder();
+        Ui.printBorder();
     }
 
     //Getters and setters

@@ -2,6 +2,7 @@ package task;
 
 import ducky.Ducky;
 import ducky.Parser;
+import ducky.Ui;
 
 import java.util.ArrayList;
 
@@ -20,11 +21,11 @@ public class Todo extends Task{
     //Add a to-do to a list of tasks
     public static void addTodo(ArrayList<Task> taskList, Parser result) {
         taskList.add(new Todo(result.description, false));
-        Ducky.printBorder();
+        Ui.printBorder();
         System.out.println("    Got it. I've added this Todo:");
-        System.out.println("      [T]" + "[ ] " + result.description);
+        System.out.println("    " + taskList.get(taskList.size()-1).toString());
         System.out.println("    Now you have " + taskList.size() + " tasks in your list.");
-        Ducky.printBorder();
+        Ui.printBorder();
     }
 
     @Override

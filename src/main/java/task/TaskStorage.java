@@ -2,6 +2,7 @@ package task;
 
 import ducky.Ducky;
 import ducky.Parser;
+import ducky.Ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,9 +38,9 @@ public class TaskStorage {
                 taskList.add(new Event(description, isDone, from, to));
                 break;
             default:
-                Ducky.printBorder();
+                Ui.printBorder();
                 System.out.println("    Error loading tasks");
-                Ducky.printBorder();
+                Ui.printBorder();
                 return;
             }
         }
@@ -84,25 +85,8 @@ public class TaskStorage {
             FileWriter fw = new FileWriter(f);
             int taskIndex = 1;
             for (Task task : taskList) {
-                fw.write(taskIndex + ". " + task.getType() + task.getStatusIcon() + " - " + task.getDescription());
+                fw.write(taskIndex + ". " + task.toString() + System.lineSeparator());
                 taskIndex++;
-                switch (task.getType()) {
-                case "[T]":
-                    fw.write(System.lineSeparator());
-                    break;
-                case "[D]":
-                    fw.write(" By: " + task.getDeadline() + System.lineSeparator());
-                    break;
-                case "[E]":
-                    fw.write(" From: " + task.getEventStart() + "To: " + task.getEventEnd() + System.lineSeparator());
-                    break;
-                default:
-                    Ducky.printBorder();
-                    System.out.println("    Error updating task");
-                    Ducky.printBorder();
-                    fw.close();
-                    return;
-                }
             }
             fw.close();
         } catch (IOException e) {
