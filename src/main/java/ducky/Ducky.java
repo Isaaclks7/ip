@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 import ducky.Ui;
 
+/**
+ * Main class of Ducky chatbot task manager.
+ * This class initiates the program, loads saved tasks and executes user input commands.
+ */
 public class Ducky {
     public static void main(String[] args) {
         Ui.printWelcomeMsg();

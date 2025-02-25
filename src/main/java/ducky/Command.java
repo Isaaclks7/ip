@@ -5,8 +5,17 @@ import task.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Command class Handles different types of commands.
+ */
 public class Command {
 
+    /**
+     * Executes the specified type of command.
+     *
+     * @param in User's input containing the command details.
+     * @param taskList Current list of all added tasks.
+     */
     public static void executeCommands(Scanner in, ArrayList<Task> taskList) {
         String line;
         while (true) {

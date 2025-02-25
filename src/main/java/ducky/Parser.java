@@ -1,5 +1,8 @@
 package ducky;
 
+/**
+ * Parser class manages user's input.
+ */
 public class Parser {
     public String command;
     public String description;
@@ -15,6 +18,12 @@ public class Parser {
         this.eventEnd = eventEnd;
     }
 
+    /**
+     * Extracts the command details from {@code userInput}.
+     *
+     * @param userInput Contains command details.
+     * @return Parser object which contains each extracted command details.
+     */
     public static Parser extract(String userInput) {
         String command = "";
         String description = "";
