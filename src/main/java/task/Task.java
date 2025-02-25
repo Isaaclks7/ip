@@ -5,21 +5,39 @@ import ducky.Ui;
 
 import java.util.ArrayList;
 
+/**
+ * Parent class of 3 types of tasks, Todo, Deadline and Event.
+ * Handles listing, marking, deletion of tasks, and updates task status as completed or not.
+ */
 public class Task {
     protected String description;
     protected boolean isDone;
     private static final String TYPE = "[T]";
 
+    /**
+     * Creates Task object.
+     */
     public Task() {
         description = "";
         isDone = false;
     }
 
+    /**
+     * Creates new Task object.
+     *
+     * @param description The description of the Task.
+     * @param isDone The status of the Task, done or not.
+     */
     public Task(String description, boolean isDone) {
         this.description = description;
         this.isDone = isDone;
     }
 
+    /**
+     * Lists down all tasks stored in {@code taskList}.
+     *
+     * @param taskList The list of all added tasks.
+     */
     //List down all existing tasks
     public static void listAllTasks(ArrayList<Task> taskList) {
         Ui.printBorder();
@@ -30,7 +48,12 @@ public class Task {
         Ui.printBorder();
     }
 
-    //Unmark a task to show that it is not done
+    /**
+     * Unmarks a task to show that it is not done.
+     *
+     * @param line The user's input containing the command and the index of the task that should be unmarked.
+     * @param taskList The list of all added tasks.
+     */
     public static void unmarkTask(String line, ArrayList<Task> taskList) {
         try {
             int taskIndex;
@@ -48,7 +71,12 @@ public class Task {
         }
     }
 
-    //Mark a task to show that it is done
+    /**
+     * Marks a task to show that it is done.
+     *
+     * @param line The user's input containing the command and the index of the task that should be marked.
+     * @param taskList The list of all added tasks.
+     */
     public static void markTask(String line, ArrayList<Task> taskList) {
         try {
             int taskIndex;
@@ -67,6 +95,12 @@ public class Task {
         }
     }
 
+    /**
+     * Deletes a task from a list of tasks.
+     *
+     * @param line The user's input containing the command and the index of the task which should be deleted.
+     * @param taskList The list of all added tasks.
+     */
     public static void deleteTask(String line, ArrayList<Task> taskList) {
         int taskIndex;
         taskIndex = Integer.parseInt(line.substring(6).trim());
@@ -111,6 +145,11 @@ public class Task {
         return description;
     }
 
+    /**
+     * Gets the status of a task, whether it is done or not.
+     *
+     * @return The status of the task, "[X]" to show that it is done, "[ ]" as not done.
+     */
     public String getStatusIcon() {
         return (isDone ? "[X]" : "[ ]");
     }

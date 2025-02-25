@@ -11,8 +11,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * {@code TaskStorage} handles the list of tasks updated by the user.
+ * The list of tasks are read and written to the text file, {@code DuckyList.txt}.
+ */
 public class TaskStorage {
 
+    /**
+     * Loads the current list of tasks from {@code DuckyList.txt}.
+     *
+     * @param taskList Stores the list of tasks.
+     * @throws FileNotFoundException If the {@code DuckyList.txt} text file does not exist.
+     */
     public static void loadData(ArrayList<Task> taskList) throws FileNotFoundException {
         File f = new File("data/DuckyList.txt");
         Scanner s = new Scanner(f);
@@ -46,11 +56,17 @@ public class TaskStorage {
         }
     }
 
+    /**
+     * Writes the added task to the text file, {@code DuckyList.txt}.
+     *
+     * @param task The task to be added.
+     * @param index The index of the task added, based on the current list size.
+     */
     public static void addTaskToFile(Task task, int index) {
         File f = new File("data/DuckyList.txt");
         File parentDir = f.getParentFile();
         if (parentDir != null && !parentDir.exists()) {
-            parentDir.mkdirs();  // This will create 'data' and any missing parent directories
+            boolean dirCreated = parentDir.mkdirs();
         }
         try {
             if (!f.exists()) {
@@ -79,6 +95,12 @@ public class TaskStorage {
         }
     }
 
+    /**
+     * Overwrites the text file {@code DuckyList.txt} whenever a task is deleted, marked or unmarked.
+     * Ensures that the list of tasks is always updated in {@code DuckyList.txt}.
+     *
+     * @param taskList Current list of all tasks.
+     */
     public static void updateTaskFile(ArrayList<Task> taskList) {
         File f = new File("data/DuckyList.txt");
         try {
