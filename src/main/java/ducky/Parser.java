@@ -1,5 +1,8 @@
 package ducky;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Parser class manages user's input.
  */
@@ -56,6 +59,12 @@ public class Parser {
             try {
                 description = userInput.substring(userInput.indexOf(" ") + 1, userInput.indexOf("/by") - 1);
                 deadline = userInput.substring(userInput.indexOf("/by") + 4);
+                try {
+                    LocalDate date = LocalDate.parse(deadline);
+                    deadline = date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+                } catch (Exception e) {
+                    break;
+                }
             } catch (Exception e) {
                 DuckyException.printDeadlineError();
                 return null;
