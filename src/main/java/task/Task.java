@@ -121,7 +121,7 @@ public class Task {
     public static void findTask(String line, ArrayList<Task> taskList) {
         String keyWord;
         try {
-            keyWord = line.substring(4).trim();
+            keyWord = line.substring(4).trim().toLowerCase();
         } catch (Exception e) {
             System.out.println("Error looking for task");
             return;
@@ -129,7 +129,7 @@ public class Task {
         Ui.printBorder();
         System.out.println("    Matching tasks found:");
         for (Task task : taskList) {
-            if (task.getDescription().contains(keyWord)) {
+            if (task.getDescription().toLowerCase().contains(keyWord)) {
                 System.out.println("    " + (taskList.indexOf(task)+1) + ". " + task.toString());
             }
         }
