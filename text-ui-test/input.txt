@@ -1,6 +1,7 @@
 todo Homework
-deadline Graded assignment 2 /by 5th April 2025
+deadline Graded assignment 2 /by 2025-02-25
 event Birthday Party /from 1st June 5.00pm /to 2nd June 12.00pm
+find graded
 list
 mark 2
 list
