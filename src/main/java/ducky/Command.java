@@ -54,6 +54,9 @@ public class Command {
                 Task.deleteTask(line, taskList);
                 TaskStorage.updateTaskFile(taskList);
                 break;
+            case "find":
+                Task.findTask(line, taskList);
+                break;
             default:
                 DuckyException.showValidCommands();
                 break;
