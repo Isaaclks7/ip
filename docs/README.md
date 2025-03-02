@@ -1,23 +1,34 @@
 # Ducky User Guide
 
-Ducky is a chatbot assistant to help you manage and keep track of your tasks, similar to a to-do list. Given below are instructions on how to use it.
+Ducky is a chatbot assistant app to help you manage and keep track of your tasks, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).
+If you can type fast, Ducky can get your task management done faster than traditional GUI apps.<br/>
 
-## Quick-Start
+- [Quick start](#quick-start)
+- [Features](#features)
+  - [Adding a To-do task: `todo`](#adding-a-to-do-task-todo)
+  - [Adding task with deadline: `deadline`](#adding-task-with-deadline-deadline)
+  - [Adding an event: `event`](#adding-an-event-event)
+  - [Deleting a task: `delete`](#deleting-a-task-delete)
+  - [Finding tasks: `find`](#finding-tasks-find)
+  - [Listing all tasks: `list`](#listing-all-tasks-list)
+  - [Marking a task: `mark`](#marking-a-task-mark)
+  - [Unmarking a task `unmark`](#unmarking-a-task-unmark)
+  - [Exiting the program: `bye`](#exiting-the-program-bye)
 
-1. Copy the jar file into an empty folder.
-1. Open a command window in that folder.
-1. Run the command java -jar "{filename}.jar" (i.e., run the command in the same folder as the jar file).<br/>
-   For example if the filename is "ip.jar":
-   ```
-   java -jar ip.jar
-   ```
-1. After that, if the setup is correct, you should see something like the below as the output:
+## Quick start
+
+1. Download the latest `.jar` file from [here](https://github.com/Isaaclks7/ip/releases/tag/A-Jar).
+2. Copy the file to the folder you want to use as the home folder for your DuckyList (List of tasks).
+3. Open a command terminal, `cd` into the folder you put the `.jar` file in.
+4. Run the command `java -jar ip.jar`
+5. If the setup is correct, you should see something like the following in a few seconds.
    ```
    ____________________________________________________________
     Hello! I'm Ducky!
     What can I do for you?
     ____________________________________________________________
    ```
+6. Refer to the [Features](#Features) section for the different commands available.
 
 ## Features
 
