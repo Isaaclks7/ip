@@ -18,12 +18,13 @@ Ducky is a chatbot assistant to help you manage and keep track of your tasks, si
     What can I do for you?
     ____________________________________________________________
    ```
+
 ## Features
 
 Notes about the command format:<br/>
-- Words in UPPER_CASE are the parameters to be supplied by the user.
+- Words in `UPPER_CASE` are the parameters to be supplied by the user.<br/>
    e.g. in `todo [DESCRIPTION]`, square brackets indicates that the input is required while `DESCRIPTION` is a parameter which can be used as `todo Buy groceries for dinner`.
-- Additional parameters start with `/` are required to be followed by an input
+- Additional parameters start with `/` are required to be followed by an input<br/>
    e.g. in `deadline [DESCRIPTION] /by [DEADLINE]`, `/by` is followed by the `[DEADLINE]` input which the task should be completed by.
 
 ## Adding a To-do task: `todo`
