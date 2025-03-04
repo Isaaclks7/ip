@@ -33,18 +33,18 @@ public class TaskStorage {
             String description = "";
             switch (taskType) {
             case "T":
-                description = line.substring(line.indexOf("-") + 1);
+                description = line.substring(line.indexOf("[") + 7);
                 taskList.add(new Todo(description, isDone));
                 break;
             case "D":
-                    description = line.substring(line.indexOf("-") + 1, line.indexOf(" By: "));
-                    String deadline = line.substring(line.indexOf("By: ") + 4);
+                    description = line.substring(line.indexOf("[") + 7, line.indexOf("(By: ") - 1);
+                    String deadline = line.substring(line.indexOf("By: ") + 4, line.indexOf(")"));
                     taskList.add(new Deadline(description, isDone, deadline));
                 break;
             case "E":
-                description = line.substring(line.indexOf("-") + 1, line.indexOf(" From: "));
-                String from = line.substring(line.indexOf("From: ") + 6, line.indexOf("To: "));
-                String to = line.substring(line.indexOf(" To: ") + 5);
+                description = line.substring(line.indexOf("[") + 7, line.indexOf("(From:") - 2);
+                String from = line.substring(line.indexOf("From: ") + 6, line.indexOf("To:") - 2);
+                String to = line.substring(line.indexOf(" To: ") + 5, line.indexOf(")"));
                 taskList.add(new Event(description, isDone, from, to));
                 break;
             default:
@@ -77,18 +77,7 @@ public class TaskStorage {
             }
             FileWriter fw = new FileWriter(f, true);
 
-            fw.write(index + ". " + task.getType() + task.getStatusIcon() + " - " + task.getDescription());
-            switch (task.getType()) {
-            case "[T]":
-                fw.write(System.lineSeparator());
-                break;
-            case "[D]":
-                fw.write(" By: " + task.getDeadline() + System.lineSeparator());
-                break;
-            case "[E]":
-                fw.write("From: " + task.getEventStart() + "To: " + task.getEventEnd() + System.lineSeparator());
-                break;
-            }
+            fw.write(index + ". " + task.toString() + System.lineSeparator());
             fw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
